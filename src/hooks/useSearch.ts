@@ -1,0 +1,2 @@
+// useSearch hook (placeholder)
+export {};

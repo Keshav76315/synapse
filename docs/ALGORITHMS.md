@@ -1,0 +1,3 @@
+# Algorithms
+
+Placeholder algorithms documentation.

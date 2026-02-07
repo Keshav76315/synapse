@@ -1,0 +1,2 @@
+// useNotes hook (placeholder)
+export {};

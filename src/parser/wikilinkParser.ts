@@ -1,0 +1,2 @@
+// Wikilink parser (placeholder)
+export {};

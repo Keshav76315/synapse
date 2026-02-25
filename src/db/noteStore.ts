@@ -3,8 +3,16 @@
 import type { Note } from "../types/Note";
 import DBConnect from "./db";
 
+let db: IDBDatabase | null = null;
 
-const getDB = async (method: string) => { //Work in Progress
+async function cache(arg: any): Promise<IDBDatabase> {
+    if (!arg) {
+        arg = await DBConnect();
+    }
+    return arg;
+}
+
+const getDB = async (method: string) => { 
     let query: IDBTransactionMode;
 
     if (method === "get") {
@@ -14,7 +22,7 @@ const getDB = async (method: string) => { //Work in Progress
         query = "readwrite";
     }
 
-    const db = await DBConnect();
+    db = await cache(db);
 
     if (!db) {
         throw Error("Database not connected, please try again later.");
@@ -43,7 +51,7 @@ const createNote = async (title: string, content: string) => {
 
         const request = store.add(note);
 
-        request.onsuccess = () => resolve(request.result);
+        request.onsuccess = () => resolve(note);
 
         request.onerror = () => reject(request.error);
 
@@ -82,7 +90,7 @@ const updateNote = async (id: string, updates: Partial<Note>) => {
     return new Promise((resolve, reject) => {
 
         if (!note) {
-            return; //Separate error handling
+            throw Error("No note found.")
         }
 
         const updatedNote = {...note, ...updates, updatedAt: Date.now()};

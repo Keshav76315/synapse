@@ -44,6 +44,9 @@ export default function App() {
       const prevSelected = selectedNote;
 
       setNotes(prev => prev.map(note => note.id === id ? {...note, ...updates}: note));
+      if (selectedNote?.id === id) {
+        setSelectedNote(prev => prev ? {...prev, ...updates}: null);
+      }
       updateNote(id, updates).catch((err) => {
         console.log("Failed to update note:", err);
         setNotes(prevNotes);

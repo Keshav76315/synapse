@@ -12,7 +12,7 @@ interface noteListProps {
 export default function NoteList({notes, selectedId, onSelect, onDelete}: noteListProps) {
   return (
     <div className="notelist">
-      <h2>My Notes</h2>
+      <h2 className='heading'>My Notes</h2>
       {notes.map(note => (
         <div key={note.id} onClick={() => onSelect(note)} className={`inlist ${note.id === selectedId ? "selected": ""}`}>
           <strong>{note.title}</strong>

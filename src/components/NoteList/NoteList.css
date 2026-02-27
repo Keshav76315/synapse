@@ -1,12 +1,24 @@
 .notelist {
     width: 300px;
-    border-right: 2px solid black;
+    border-right: 2px solid cyan;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .inlist {
     padding: 8px;
     background: #e0e0ff;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.heading {
+    justify-self: flex-start !important;
 }
 
 .selected {

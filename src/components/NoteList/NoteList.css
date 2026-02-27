@@ -9,3 +9,7 @@
     cursor: pointer;
 }
 
+.selected {
+    background: #c0c0ff;
+}
+

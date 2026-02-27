@@ -34,13 +34,17 @@ const getDB = async (method: string) => {
     return store;
 }
 
-const createNote = async (title: string, content: string) => {
+const createNote = async (id: string | null, title: string, content: string) => {
     const store = await getDB("put");
 
     return new Promise((resolve, reject) => {
+
+        if (!id) {
+            id = crypto.randomUUID();
+        }
          
         const note = {
-            id: crypto.randomUUID(),
+            id: id,
             title: title,
             content: content,
             createdAt: Date.now(),

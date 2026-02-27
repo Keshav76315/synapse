@@ -14,9 +14,9 @@ export default function NoteList({notes, selectedId, onSelect, onDelete}: noteLi
     <div className="notelist">
       <h2>My Notes</h2>
       {notes.map(note => (
-        <div key={note.id} onClick={() => onSelect(note)} className="inlist">
+        <div key={note.id} onClick={() => onSelect(note)} className={`inlist ${note.id === selectedId ? "selected": ""}`}>
           <strong>{note.title}</strong>
-          <p>{note.content.substring(0, 100)}</p>
+          <p>{note.content?.substring(0, 100) ?? ''}</p>          
           <button onClick={(e) => {e.stopPropagation(); onDelete(note.id)}}>Delete</button>
         </div>
       ))}

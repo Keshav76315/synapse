@@ -14,14 +14,17 @@ export default function App() {
     .then(() => {
       console.log("DB connected successfully");
       getAllNotes()
-      .then((result) => setNotes(result as Note[]));
-    })
+      .then((result) => setNotes(result as Note[]))
+      .catch((err) => console.error("Failed to fetch notes:", err));    })
     .catch((err) => console.log("DB refused to connect. Error: ", err))    
   }, [])
 
   const handleCreate = (title: string, content: string) => {
+    const id = crypto.randomUUID();
+    const prevNotes = notes;
+
     const newNote: Note = {
-      id: crypto.randomUUID(),
+      id: id,
       title: title,
       content: content,
       createdAt: Date.now(),
@@ -30,22 +33,39 @@ export default function App() {
       linkedNotes: []
     };
     setNotes(prev => [...prev, newNote]);
-    createNote(title, content);
+    createNote(id, title, content).catch((err) => {
+      console.error("Failed to create note:", err);
+      setNotes(prevNotes);
+    });
   }
 
   const handleUpdate = (id: string, updates: Partial<Note>) => {
+      const prevNotes = notes;
+      const prevSelected = selectedNote;
+
       setNotes(prev => prev.map(note => note.id === id ? {...note, ...updates}: note));
-      updateNote(id, updates);
+      updateNote(id, updates).catch((err) => {
+        console.log("Failed to update note:", err);
+        setNotes(prevNotes);
+        setSelectedNote(prevSelected);
+      });
   }
 
   const handleDelete = (id: string) => {
+    const prevNotes = notes;
+    const prevSelected = selectedNote;
+
     setNotes(prev => prev.filter(n => n.id !== id))
 
     if (selectedNote?.id === id) {
       setSelectedNote(null);
     }
 
-    deleteNote(id);
+    deleteNote(id).catch((err) => {
+      console.error("Failed to delete note:", err);
+      setNotes(prevNotes);
+      setSelectedNote(prevSelected);
+    });
   }
 
   return (

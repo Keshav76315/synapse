@@ -15,8 +15,7 @@ export default function NoteEditor({selected, onSave}: {selected: Note | null, o
       setTitle("");
       setContent("");
     }
-  }, [selected]);
-
+  }, [selected?.id]);
   return (
     <div className="noteeditor">
       <h2>{selected ? "Editing": "New Note"}</h2>

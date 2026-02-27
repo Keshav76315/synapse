@@ -22,20 +22,20 @@
 - [x] Create `searchIndex` object store (keyPath: `term`)
 - [x] Verify in DevTools → Application → IndexedDB
 
-### Day 4–5: Note CRUD Operations 🔄
+### Day 4–5: Note CRUD Operations ✅
 
-- [ ] Implement `createNote()` in `src/db/noteStore.ts`
-- [ ] Implement `getNote()` and `getAllNotes()`
-- [ ] Implement `updateNote()`
-- [ ] Implement `deleteNote()`
-- [ ] Test CRUD via console/DevTools
+- [x] Implement `createNote()` in `src/db/noteStore.ts`
+- [x] Implement `getNote()` and `getAllNotes()`
+- [x] Implement `updateNote()`
+- [x] Implement `deleteNote()`
+- [x] Test CRUD via console/DevTools
 
-### Day 6–7: Basic UI
+### Day 6–7: Basic UI ✅
 
-- [ ] Build `NoteList` component
-- [ ] Build `NoteEditor` component
-- [ ] Wire components to CRUD operations
-- [ ] Basic layout in `App.tsx`
+- [x] Build `NoteList` component
+- [x] Build `NoteEditor` component
+- [x] Wire components to CRUD operations
+- [x] Basic layout in `App.tsx`
 
 ## Week 2: Search, Parser, Tags
 

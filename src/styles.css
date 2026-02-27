@@ -1,2 +1,7 @@
 /* Global styles placeholder */
 body { font-family: sans-serif; }
+
+.app {
+    display: flex;
+    height: 100vh;
+}

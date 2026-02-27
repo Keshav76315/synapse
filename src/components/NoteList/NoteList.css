@@ -1,1 +1,11 @@
-.note-list { /* placeholder styles */ }
+.notelist {
+    width: 300px;
+    border-right: 2px solid black;
+}
+
+.inlist {
+    padding: 8px;
+    background: #e0e0ff;
+    cursor: pointer;
+}
+
